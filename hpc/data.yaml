@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 10
+names: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+roboflow:
+  workspace: beerdetector
+  project: car_detector-ahhbb
+  version: 4
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/beerdetector/car_detector-ahhbb/dataset/4
