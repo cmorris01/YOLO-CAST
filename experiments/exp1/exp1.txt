@@ -1,0 +1,23 @@
+Trained on 2/1/2024
+
+Size: nano
+
+Hyperparameters:
+    epochs = 40
+    batch = -1
+    optimizer= Adam
+    classes = [3]
+
+Environment variables:
+    PYTORCH_CUDA_ALLOC_CONF = max_split_size_mb:256
+
+Model summary:
+168 layers, 3007598 parameters, 0 gradients, 8.1 GFLOPs
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95):
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95):
+                   all       2093      41083      0.788      0.664      0.728      0.471
+                     3       2093      41083      0.788      0.664      0.728      0.471
+
+Speed - 0.2ms preprocess, 1.5ms inference, 0.0ms loss, 2.4ms postprocess per image
+
+To note: lost access to runtime save state. Cannot access loss readings, etc.
