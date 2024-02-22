@@ -1,0 +1,1 @@
+This folder contains our experiments training and testing model. The experiment folder contains metrics associated with each training sessions as well as testing videos.
