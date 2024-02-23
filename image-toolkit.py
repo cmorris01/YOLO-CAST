@@ -1,3 +1,11 @@
+"""
+image-toolkit.py
+~~~~~~~~~~~~
+
+A module to pull images from visdrone dataset online. Pulled from https://docs.ultralytics.com/datasets/detect/visdrone/#applications
+
+"""
+
 import os
 from pathlib import Path
 
