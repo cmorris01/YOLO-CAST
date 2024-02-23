@@ -1,0 +1,17 @@
+Bootstrap: docker
+From: sonoisa/deep-learning-coding:pytorch1.12.0_tensorflow2.9.1
+
+%post
+    # Update and install dependencies
+    apt-get update && apt-get install -y wget
+
+    # Install Python dependencies
+    pip install ultralytics
+
+%environment
+    export PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
+    export LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
+
+%runscript
+    echo "Container was called with: $*"
+    exec python "$@"

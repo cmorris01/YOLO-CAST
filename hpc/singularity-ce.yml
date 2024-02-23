@@ -13,9 +13,7 @@ images:
 
 mounts:
 - location: "~"
-writeable: true
 - location: "/tmp/lima"
-writeable: true
 
 containerd:
   system: false
