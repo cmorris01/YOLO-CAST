@@ -7,12 +7,12 @@ TO DO: create a tune_hyperparamter script that outputs
 
 
 """
-# %%
+
 # Setting environmental variable and import statements
 import os
 import torch
 from ultralytics import YOLO
-import typing
+from typing import List, Any
 
 # Specifying cuda GPU memory allocation. Required in google colab to deal with memory overrun, using as safeguard for HPC
 os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'max_split_size_mb:256'
@@ -24,7 +24,49 @@ else:
     device_name = torch.device('cpu')
 print(f"Using {device_name} for training.")
 
-# %%
-# Hyperparameter selection 
-def choose_hyperparameters() -> None:
-    pass
+# Create function that trains model
+class TrainModel:
+
+    def __init__(self) -> None:
+        # initialize hyperparameters
+        self.model_size:str = ''
+        self.epochs:int = 100
+        self.batch:int = -1
+        self.classes:List[int] = [3]
+        self.optimizer:str = ''
+        self.cos_lr_stat:bool = False
+
+    def prompt_hyperparameters(self) -> None:
+        # prompt the user with hyperparameter choices
+        print(f'Select model size (n, s, m, l, x): ')
+        self.model_size = input()
+
+        print(f'Select epochs amount: ')
+        self.epochs = input()
+
+        print(f'Select batch size (-1 for auto): ')
+        self.batch = input()
+
+        print(f'Specify classes (likely 3): ')
+        self.classes[0] = input()
+
+        print(f'Select optimizer (SGD, Adam, AdamW, NAdam, RAdam, RMSProp): ')
+        self.optimizer = input()
+
+        print(f'Select cosine learning rate status: ')
+        while True:
+            temp_var_coslr:str = ''
+            temp_var_coslr = input()
+            if temp_var_coslr == 'False':
+                self.cos_lr_stat = False
+                break
+            elif temp_var_coslr == 'True':
+                self.cos_lr_stat = True
+                break
+            else:
+                print('Invalid input, please enter True or False.')
+            
+            
+if __name__ == "__main__":
+    test_instance = TrainModel()
+    test_instance.prompt_hyperparameters()
