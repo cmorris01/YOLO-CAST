@@ -13,6 +13,7 @@ import os
 import torch
 from ultralytics import YOLO
 from typing import List, Any
+import pandas as pd
 
 # Specifying cuda GPU memory allocation. Required in google colab to deal with memory overrun, using as safeguard for HPC
 os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'max_split_size_mb:256'
@@ -37,34 +38,27 @@ class TrainModel:
         self.cos_lr_stat:bool = False
 
     def prompt_hyperparameters(self) -> None:
+        # read in config as pandas dataframe
+        config = pd.read_csv('hpc/config.csv')
+
         # prompt the user with hyperparameter choices
-        print(f'Select model size (n, s, m, l, x): ')
-        self.model_size = input()
+        self.model_size = config.iloc[0, 0]
+        print(f'Selected model size (n, s, m, l, x): {self.model_size}')
 
-        print(f'Select epochs amount: ')
-        self.epochs = int(input())
+        self.epochs = int(config.iloc[0, 1])
+        print(f'Selected epochs amount: {self.epochs}')
 
-        print(f'Select batch size (-1 for auto): ')
-        self.batch = int(input())
+        self.batch = int(config.iloc[0, 2])
+        print(f'Selected batch size (-1 for auto): {self.batch}')
 
-        print(f'Specify classes (likely 3): ')
-        self.classes[0] = int(input())
+        self.classes[0] = int(config.iloc[0, 3])
+        print(f'Specified classes (likely 3): {self.classes[0]}')
 
-        print(f'Select optimizer (SGD, Adam, AdamW, NAdam, RAdam, RMSProp): ')
-        self.optimizer = input()
+        self.optimizer = config.iloc[0, 4]
+        print(f'Selected optimizer (SGD, Adam, AdamW, NAdam, RAdam, RMSProp): {self.optimizer}')
 
-        print(f'Select cosine learning rate status: ')
-        while True:
-            temp_var_coslr:str = ''
-            temp_var_coslr = input()
-            if temp_var_coslr == 'False':
-                self.cos_lr_stat = False
-                break
-            elif temp_var_coslr == 'True':
-                self.cos_lr_stat = True
-                break
-            else:
-                print('Invalid input, please enter True or False.')
+        self.cos_lr_stat = bool(config.iloc[0, 5])
+        print(f'Select cosine learning rate status: {self.cos_lr_stat}')
 
     def train_init(self) -> None:
         # Load a model
@@ -75,7 +69,6 @@ class TrainModel:
         results = model.train(data='hpc/data.yaml', epochs=self.epochs, batch=self.batch, classes=self.classes, 
                               optimizer=self.optimizer, cos_lr=self.cos_lr_stat)
             
-
 if __name__ == "__main__":
     test_instance = TrainModel()
     test_instance.prompt_hyperparameters()
