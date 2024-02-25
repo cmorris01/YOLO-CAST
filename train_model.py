@@ -42,13 +42,13 @@ class TrainModel:
         self.model_size = input()
 
         print(f'Select epochs amount: ')
-        self.epochs = input()
+        self.epochs = int(input())
 
         print(f'Select batch size (-1 for auto): ')
-        self.batch = input()
+        self.batch = int(input())
 
         print(f'Specify classes (likely 3): ')
-        self.classes[0] = input()
+        self.classes[0] = int(input())
 
         print(f'Select optimizer (SGD, Adam, AdamW, NAdam, RAdam, RMSProp): ')
         self.optimizer = input()
@@ -65,8 +65,18 @@ class TrainModel:
                 break
             else:
                 print('Invalid input, please enter True or False.')
+
+    def train_init(self) -> None:
+        # Load a model
+        model = YOLO(f'yolov8{self.model_size}.pt')  # load a pretrained model (recommended for training)
+        model.to(device_name)
+
+        # Train the model
+        results = model.train(data='hpc/data.yaml', epochs=self.epochs, batch=self.batch, classes=self.classes, 
+                              optimizer=self.optimizer, cos_lr=self.cos_lr_stat)
             
-            
+
 if __name__ == "__main__":
     test_instance = TrainModel()
     test_instance.prompt_hyperparameters()
+    test_instance.train_init()
