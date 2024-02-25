@@ -1,2 +1,2 @@
-model_size, epochs, batch, classes, optimizer, cos_lr
-n, 100, -1, 3, AdamW, True
+model_size, epochs, batch, classes, optimizer, cos_lr, project, name
+n, 100, -1, 3, AdamW, True, experiments, exp2

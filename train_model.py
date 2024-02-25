@@ -36,13 +36,15 @@ class TrainModel:
         self.classes:List[int] = [3]
         self.optimizer:str = ''
         self.cos_lr_stat:bool = False
+        self.project:str = ''
+        self.name:str = ''
 
     def prompt_hyperparameters(self) -> None:
         # read in config as pandas dataframe
         config = pd.read_csv('hpc/config.csv')
 
         # prompt the user with hyperparameter choices
-        self.model_size = config.iloc[0, 0]
+        self.model_size = config.iloc[0, 0].strip()
         print(f'Selected model size (n, s, m, l, x): {self.model_size}')
 
         self.epochs = int(config.iloc[0, 1])
@@ -54,11 +56,15 @@ class TrainModel:
         self.classes[0] = int(config.iloc[0, 3])
         print(f'Specified classes (likely 3): {self.classes[0]}')
 
-        self.optimizer = config.iloc[0, 4]
+        self.optimizer = config.iloc[0, 4].strip()
         print(f'Selected optimizer (SGD, Adam, AdamW, NAdam, RAdam, RMSProp): {self.optimizer}')
 
-        self.cos_lr_stat = bool(config.iloc[0, 5])
+        self.cos_lr_stat = bool(config.iloc[0, 5].strip())
         print(f'Select cosine learning rate status: {self.cos_lr_stat}')
+
+        self.project = config.iloc[0, 6].strip()
+        self.name = config.iloc[0, 7].strip()
+        print(f'Results will be saved in {self.project}/{self.name}')
 
     def train_init(self) -> None:
         # Load a model
@@ -67,7 +73,7 @@ class TrainModel:
 
         # Train the model
         results = model.train(data='hpc/data.yaml', epochs=self.epochs, batch=self.batch, classes=self.classes, 
-                              optimizer=self.optimizer, cos_lr=self.cos_lr_stat)
+                              optimizer=self.optimizer, cos_lr=self.cos_lr_stat, project=self.project, name=self.name)
             
 if __name__ == "__main__":
     test_instance = TrainModel()
