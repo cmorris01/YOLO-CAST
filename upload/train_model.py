@@ -19,8 +19,9 @@ import pandas as pd
 os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'max_split_size_mb:256'
 
 # Intializing GPU use if available for training.
+
 if torch.cuda.is_available():
-    device_name = torch.device("cuda")
+    device_name = torch.device("gpu")
 else:
     device_name = torch.device('cpu')
 print(f"Using {device_name} for training.")
@@ -41,7 +42,7 @@ class TrainModel:
 
     def prompt_hyperparameters(self) -> None:
         # read in config as pandas dataframe
-        config = pd.read_csv('hpc/config.csv')
+        config = pd.read_csv('./config.csv')
 
         # prompt the user with hyperparameter choices
         self.model_size = config.iloc[0, 0].strip()
@@ -72,7 +73,7 @@ class TrainModel:
         model.to(device_name)
 
         # Train the model
-        results = model.train(data='hpc/data.yaml', epochs=self.epochs, batch=self.batch, classes=self.classes, 
+        results = model.train(data='./data.yaml', epochs=self.epochs, batch=self.batch, classes=self.classes, 
                               optimizer=self.optimizer, cos_lr=self.cos_lr_stat, project=self.project, name=self.name)
             
 if __name__ == "__main__":

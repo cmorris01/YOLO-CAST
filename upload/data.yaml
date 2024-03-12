@@ -1,6 +1,5 @@
-train: /training/train/images
-val: /training/valid/images
-test: /training/test/images
+train: /home/crm058/training/train/images
+val: /home/crm058/training/valid/images
 
 nc: 10
 names: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
