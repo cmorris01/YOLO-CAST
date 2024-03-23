@@ -11,3 +11,17 @@ f(x) = max(0, x)
 This means that the output of the function is x if is greater than or equal to 0, and 0 otherwise. This is followed by pooling layers that reduce the spatial size of the feature maps (the map of features highlighted by the convolutional layers), reducing the amount of parameters and computation in the network. Finally, fully connected layers utilize features extracted and condensed by the convolutional layers and pooling layers respectively to perform classification and/or localization. These fully connected layers are the same as neuron layers used in traditional neural networks. It's important to note that these layers flatten the output data from previous layers into single vectors.
 
 This website does a great job of visualizing a ConvNet performing classification: (https://adamharley.com/nn_vis/cnn/2d.html)
+
+There are a lot of details I glossed over, mostly concerning the learning process ConvNets utilize to discover optimal parameter weights; you can read more about the learning process here: (http://neuralnetworksanddeeplearning.com/chap2.html) & (http://neuralnetworksanddeeplearning.com/chap3.html).
+
+### YOLO Architecture
+
+
+
+
+
+
+
+
+
+
