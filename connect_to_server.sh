@@ -2,7 +2,7 @@
 
 # Set variables
 set timeout -1
-set password "Tigers9498"
+set password ""
 set user "crm058"
 set host "hpc-portal2.hpc.uark.edu"
 
