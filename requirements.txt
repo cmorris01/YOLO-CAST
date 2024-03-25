@@ -10,3 +10,4 @@ scipy>=1.10.1
 tqdm>=4.66.1
 ultralytics>=8.1.2
 requests>=2.31.0
+remote-kernel>=1.1
