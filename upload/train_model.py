@@ -21,7 +21,7 @@ os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'max_split_size_mb:256'
 # Intializing GPU use if available for training.
 
 if torch.cuda.is_available():
-    device_name = torch.device("gpu")
+    device_name = torch.device("cuda")
 else:
     device_name = torch.device('cpu')
 print(f"Using {device_name} for training.")
