@@ -22,7 +22,7 @@ Today, the YOLO algorithm is open-sourced, maintained, and further developed by 
 
 The Ultralytics YOLO documentation is located at https://docs.ultralytics.com/.
 
-### What It Takes to Train a YOLO Model
+### Gathering Training Data
 
 The demo training notebook located within this repository will detail a majority of the real-time training process; however, the notebook does not detail an essential part of the training process: gathering training data.
 
@@ -31,6 +31,12 @@ The training data for YOLO consists of images and corresponding annotation files
 `object-class, x-center, y-center, width, height`
 
 Here, object-class is an integer representing the class of the object, and x-center, y-center, width, and height are float values relative to the width and height of the image, ranging between 0 and 1. These values denote the center coordinates of the object's bounding box, as well as the bounding box's width and height. The use of relative coordinates makes the model adaptable to images of different sizes.
+
+Training data can be hard to come by, especially if you are attempting to train a model for a niche or novel purpose. If labeled data is unavailable, there are ways to gather and label custom data, although this can be time consuming. Obtaining training imagery is generally done through webscraping or creating custom images. Labeling imagery is typically best done through third party software; cvat.ai is my prefered annotation software (https://www.cvat.ai/). This video is a fantastic introduction to training a YOLO model, and it discusses how to use cvat.ai to label custom data.
+
+Generally, effective models are trained on the magnitude of hundreds if not thousands (if not tens of thousands) data points
+
+Transfer learning is not a substitute for robust training data....
 
 
 
