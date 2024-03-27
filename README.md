@@ -16,7 +16,7 @@ There are a lot of details I glossed over, mostly concerning the learning proces
 
 ### The YOLO (You Only Look Once) Algorithm
 
-The YOLO algorithm is a real-time object detection network architecture developed by computer-vision researchers Joseph Redmon and Ali Farhadi in 2015. Unlike traditional methods that process an image multiple times to detect objects, YOLO divides the image into a grid and predicts bounding boxes and class probabilities for each grid cell in a single pass. This unique approach allows YOLO to detect objects in real-time, making it ideal for applications requiring fast processing, such as video surveillance and autonomous vehicles.
+The YOLO algorithm is a real-time object detection convolutional network architecture developed by computer-vision researchers Joseph Redmon and Ali Farhadi in 2015. Unlike traditional methods that process an image multiple times to detect objects, YOLO divides the image into a grid and predicts bounding boxes and class probabilities for each grid cell in a single pass. This unique approach allows YOLO to detect objects in real-time, making it ideal for applications requiring fast processing, such as video surveillance and autonomous vehicles.
 
 Today, the YOLO algorithm is open-sourced, maintained, and further developed by Ultralytics, which offers a robust Python implementation of YOLO, known as YOLOv8. Ultralytics provides a suite of tools and features that enhance the usability and functionality of YOLO for a wide array of applications, from academic research to industrial deployment. YOLOv8 is highly customizable, provides a wide array of real-time and post-hoc training metrics, and is easily troubleshooted due to substantial community support.
 
