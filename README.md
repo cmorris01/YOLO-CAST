@@ -22,6 +22,16 @@ Today, the YOLO algorithm is open-sourced, maintained, and further developed by 
 
 The Ultralytics YOLO documentation is located at https://docs.ultralytics.com/.
 
+### What It Takes to Train a YOLO Model
+
+The demo training notebook located within this repository will detail a majority of the real-time training process; however, the notebook does not detail an essential part of the training process: gathering training data.
+
+The training data for YOLO consists of images and corresponding annotation files that provide details about the objects within these images. Each annotation file corresponds to an image file and contains one or more lines, each representing a different object in the image. A line in the annotation file follows the format:
+
+<object-class> <x-center> <y-center> <width> <height>
+
+Here, <object-class> is an integer representing the class of the object, and <x-center>, <y-center>, <width>, and <height> are float values relative to the width and height of the image, ranging between 0 and 1. These values denote the center coordinates of the object's bounding box, as well as the bounding box's width and height. The use of relative coordinates makes the model adaptable to images of different sizes.
+
 
 
 
