@@ -34,7 +34,11 @@ Here, object-class is an integer representing the class of the object, and x-cen
 
 Training data can be hard to come by, especially if you are attempting to train a model for a niche or novel purpose. If labeled data is unavailable, there are ways to gather and label custom data, although this can be time consuming. Obtaining training imagery is generally done through webscraping or creating custom images. Labeling imagery is typically best done through third party software; cvat.ai is my prefered annotation software (https://www.cvat.ai/). This video is a fantastic introduction to training a YOLO model, and it discusses how to use cvat.ai to label custom data.
 
-Generally, effective models are trained on the magnitude of hundreds if not thousands (if not tens of thousands) data points
+Effective models usually require training on a large scale, often involving hundreds, thousands, or even tens of thousands of data points. Insufficient training data can lead to overfitting (https://www.ibm.com/topics/overfitting.), a scenario where the model learns specific idiosyncrasies of the training data that don't apply more broadly. Consequently, it struggles to generalize to new data not included in the limited training set. 
+
+Transfer learning and data augmentation are approaches to 'artificially' supplement/expand training data. Data augmentation is a data expansion technique in which spatial/color transformations are applied to existing imagery in the training set; data augmentation will aid a model in generalizing regardless of environmental variables (lighting, rotation of object in view, etc.) without the need for more unique imagery. Common data augmentations include rotation; translation; rescaling; cropping; adjusting saturation, brightness, or contrast; noise injection; and cutout.
+
+Transfer learning as a technique does not directly involve expanding training data....
 
 Transfer learning is not a substitute for robust training data....
 
