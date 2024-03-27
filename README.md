@@ -28,9 +28,9 @@ The demo training notebook located within this repository will detail a majority
 
 The training data for YOLO consists of images and corresponding annotation files that provide details about the objects within these images. Each annotation file corresponds to an image file and contains one or more lines, each representing a different object in the image. A line in the annotation file follows the format:
 
-<object-class> <x-center> <y-center> <width> <height>
+`object-class, x-center, y-center, width, height`
 
-Here, <object-class> is an integer representing the class of the object, and <x-center>, <y-center>, <width>, and <height> are float values relative to the width and height of the image, ranging between 0 and 1. These values denote the center coordinates of the object's bounding box, as well as the bounding box's width and height. The use of relative coordinates makes the model adaptable to images of different sizes.
+Here, object-class is an integer representing the class of the object, and x-center, y-center, width, and height are float values relative to the width and height of the image, ranging between 0 and 1. These values denote the center coordinates of the object's bounding box, as well as the bounding box's width and height. The use of relative coordinates makes the model adaptable to images of different sizes.
 
 
 
